@@ -1,4 +1,4 @@
 Algo-Project
 ============
 
-salt and pepper image filter
+Removing picture noise by Alpha-Trim and Adaptive Median filters.
