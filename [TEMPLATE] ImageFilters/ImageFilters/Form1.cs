@@ -27,7 +27,6 @@ namespace ImageFilters
                 string OpenedFilePath = openFileDialog1.FileName;
                 ImageMatrix = ImageOperations.OpenImage(OpenedFilePath);
                 ImageOperations.DisplayImage(ImageMatrix, pictureBox1);
-
             }
         }
 
@@ -53,6 +52,23 @@ namespace ImageFilters
             ZGF.Show();
         }
 
-        
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int windowSize = (int)numWindowSize.Value;
+            int trimValue  = (int)numTrimValue.Value;
+
+            if (ImageMatrix == null)
+                MessageBox.Show("Please choose an image first.", "No Input", MessageBoxButtons.OK);
+            else
+            {
+                AlphaTrimFilter alphaTrim = new AlphaTrimFilter(ImageMatrix, pictureBox1, SortingType.BUILT_IN_SORT);
+                alphaTrim.removeNoise(windowSize, trimValue);
+            }
+        }
     }
 }
