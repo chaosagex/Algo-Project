@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ImageFilters
+namespace Sort
 {
 	class quicksort
 	{
@@ -17,16 +17,12 @@ namespace ImageFilters
 				while (numbers[right] > pivot)
 					right--;
 
-				if (left < right)
-				{
-					int temp = numbers[right];
-					numbers[right] = numbers[left];
-					numbers[left] = temp;
-				}
-				else
-				{
-					return right;
-				}
+                    if (left < right)
+                         kth_element.Swap(ref numbers[left], ref numbers[right]);
+                    else
+                    {
+                         return right;
+                    }
 			}
 		}
 

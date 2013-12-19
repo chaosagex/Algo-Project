@@ -96,7 +96,7 @@ namespace Sort
                Swap(ref arr[j], ref arr[pivot]);
                return largest(ref arr,j+1,end);
           }
-          static void Swap<T>(ref T lhs, ref T rhs)
+          public static void Swap<T>(ref T lhs, ref T rhs)
           {
                T temp;
                temp = lhs;
