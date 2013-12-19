@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace Sort
@@ -8,9 +7,9 @@ namespace Sort
      class kth_element
      {
           private byte[] arr;
-          private byte k = 0;
+          private int k = 0;
 
-          public kth_element(ref byte[] arr, byte k)
+          public kth_element(ref byte[] arr, int k)
           {
                // TODO: Complete member initialization
                this.arr = arr;

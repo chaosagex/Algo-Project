@@ -66,7 +66,7 @@ namespace ImageFilters
                 MessageBox.Show("Please choose an image first.", "No Input", MessageBoxButtons.OK);
             else
             {
-                AlphaTrimFilter alphaTrim = new AlphaTrimFilter(ImageMatrix, pictureBox1, SortingType.BUILT_IN_SORT);
+                AlphaTrimFilter alphaTrim = new AlphaTrimFilter(ImageMatrix, pictureBox1, SortingType.KTH_ELEMENT);
                 alphaTrim.removeNoise(windowSize, trimValue);
             }
         }

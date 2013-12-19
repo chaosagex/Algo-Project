@@ -55,11 +55,16 @@ namespace ImageFilters
                     byte[] newWindow = to1D(window);                 //Convert to 1D
 
                     if (sortingType == SortingType.BUILT_IN_SORT)    //Sort
-                        Array.Sort(newWindow);              
+                        Array.Sort(newWindow);
                     else
-                    {
-                        //Waiting...
-                    }
+                         if (sortingType == SortingType.KTH_ELEMENT)    //Sort
+                         {
+                              Sort.kth_element temp = new Sort.kth_element(ref newWindow, trimValue);
+                         }
+                    else
+                         {
+                              //Waiting...
+                         }
 
                     newWindow = exclude(newWindow, trimValue); //Exclude by trim (T)
                     byte avg  = arrAverage(newWindow);         //Claculate average
