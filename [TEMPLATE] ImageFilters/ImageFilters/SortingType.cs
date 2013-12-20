@@ -9,6 +9,6 @@ namespace ImageFilters
         BUILT_IN_SORT = 0,
         COUNTING_SORT = 1,
         KTH_ELEMENT   = 2,
-        Quick_Sort    = 3,
+        QUICK_SORT    = 3
     }
 }

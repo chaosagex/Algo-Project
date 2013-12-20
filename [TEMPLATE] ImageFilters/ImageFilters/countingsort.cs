@@ -6,7 +6,7 @@ namespace Sort
 {
 	class countingsort
 	{
-		static public  int[] CountingSort(int [] input)
+		static public int[] CountingSort(int [] input)
         {
             // O(1)
            int max = input[0];

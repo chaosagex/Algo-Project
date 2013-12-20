@@ -52,19 +52,22 @@ namespace ImageFilters
                             window[m, k] = imageMatrix[n, l];        //Making a window
                         }
                     }
+                    
                     byte[] newWindow = to1D(window);                 //Convert to 1D
 
-                    if (sortingType == SortingType.BUILT_IN_SORT)    //Sort
+                    if (sortingType == SortingType.BUILT_IN_SORT){   //Sort
                         Array.Sort(newWindow);
+                    }
+                    else if (sortingType == SortingType.KTH_ELEMENT){
+                        Sort.kth_element kthSort = new Sort.kth_element(ref newWindow, trimValue);
+                    }
+                    else if (sortingType == SortingType.COUNTING_SORT){
+                        //newWindow = Sort.countingsort.CountingSort(newWindow);
+                    }
                     else
-                         if (sortingType == SortingType.KTH_ELEMENT)    //Sort
-                         {
-                              Sort.kth_element temp = new Sort.kth_element(ref newWindow, trimValue);
-                         }
-                    else
-                         {
-                              //Waiting...
-                         }
+                    {
+                        //Waiting...
+                    }
 
                     newWindow = exclude(newWindow, trimValue); //Exclude by trim (T)
                     byte avg  = arrAverage(newWindow);         //Claculate average
