@@ -9,9 +9,9 @@ using ZGraphTools;
 
 namespace ImageFilters
 {
-    public partial class mainForm : Form
+    public partial class Form1 : Form
     {
-        public mainForm()
+        public Form1()
         {
             InitializeComponent();
         }
@@ -26,8 +26,11 @@ namespace ImageFilters
                 //Open the browsed image and display it
                 string OpenedFilePath = openFileDialog1.FileName;
                 ImageMatrix = ImageOperations.OpenImage(OpenedFilePath);
-                ImageOperations.DisplayImage(ImageMatrix, leftPictureBox);
+                ImageOperations.DisplayImage(ImageMatrix, pictureBox1);
+              
+
             }
+           
         }
 
         private void btnZGraph_Click(object sender, EventArgs e)
@@ -46,53 +49,21 @@ namespace ImageFilters
             }
 
             //Create a graph and add two curves to it
-            ZGraphForm ZGF = new ZGraphForm("Sample Graph", "N", "f(N)");
-            ZGF.add_curve("f(N) = N", x_values, y_values_N, Color.Red);
+             ZGraphForm ZGF = new ZGraphForm("Sample Graph", "N", "f(N)");
+            ZGF.add_curve("f(N) = N", x_values, y_values_N,Color.Red);
             ZGF.add_curve("f(N) = N Log(N)", x_values, y_values_NLogN, Color.Blue);
             ZGF.Show();
         }
 
-        private void btnRemoveNoise_Alpha_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            int windowSize = (int)numWindowSize_Alpha.Value;
-            int trimValue  = (int)numTrimValue_Alpha.Value;
-
-            if (ImageMatrix == null)
-                MessageBox.Show("Please choose an image first.", "No Input", MessageBoxButtons.OK);
-            else
-            {
-                SortingType sortingType;
-
-                if (rdKthSort_Alpha.Checked)
-                    sortingType = SortingType.KTH_ELEMENT;
-                else if (rdCountingSort_Alpha.Checked)
-                    sortingType = SortingType.COUNTING_SORT;
-                else
-                    sortingType = SortingType.BUILT_IN_SORT;
-
-                AlphaTrimFilter alphaTrim = new AlphaTrimFilter(ImageMatrix, rightPictureBox, sortingType);
-                alphaTrim.removeNoise(windowSize, trimValue);
-            }
+           
+            AdaptiveMedianFilter a = new AdaptiveMedianFilter(ImageMatrix, 9, pictureBox2, SortingType.BUILT_IN_SORT);
+            a.Filter();
+           // AdaptiveMedianFilter a = new AdaptiveMedianFilter(ImageMatrix, 9);
+            //ImageOperations.DisplayImage(a.NewArray, pictureBox2);
         }
 
-        private void mainForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void leftPictureBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRemoveNoise_Median_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageFilters", "ImageFilters\ImageFilters.csproj", "{543720D9-2C94-4048-BDCC-9025F2FB23CB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZGraphTools", "ZGraphTools\ZGraphTools.csproj", "{819BA123-0519-4A15-82E5-A05A0C3B096B}"
