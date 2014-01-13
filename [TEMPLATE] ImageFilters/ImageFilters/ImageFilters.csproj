@@ -78,6 +78,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageOperations.cs" />
+    <Compile Include="ImageTools.cs" />
     <Compile Include="KthElement.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -58,10 +58,14 @@ namespace ImageFilters
             int trimValue  = (int)numTrimValue_Alpha.Value;
 
             if (ImageMatrix == null)
+            {
                 MessageBox.Show("Please choose an image first.", "No Input", MessageBoxButtons.OK);
+            }
             else
             {
                 SortingType sortingType;
+                byte[,] filteredImage;
+                AlphaTrimFilter alphaTrim = new AlphaTrimFilter(ImageMatrix);
 
                 if (rdKthSort_Alpha.Checked)
                     sortingType = SortingType.KTH_ELEMENT;
@@ -70,29 +74,40 @@ namespace ImageFilters
                 else
                     sortingType = SortingType.BUILT_IN_SORT;
 
-                AlphaTrimFilter alphaTrim = new AlphaTrimFilter(ImageMatrix, rightPictureBox, sortingType);
-                alphaTrim.removeNoise(windowSize, trimValue);
+                filteredImage = alphaTrim.removeNoise(windowSize, trimValue, sortingType);
+
+                if (filteredImage != null)  //No problem catched in 'removeNoise'.
+                {
+                    //Improving borders:
+                    filteredImage = ImageTools.initArray(filteredImage, windowSize);
+
+                    //Final display:
+                    ImageOperations.DisplayImage(filteredImage, rightPictureBox);
+                }
             }
-        }
-
-        private void mainForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void leftPictureBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void btnRemoveNoise_Median_Click(object sender, EventArgs e)
         {
+            //The click event handler for Median Filter button.
+        }
 
+        private void rightPictureBox_Click(object sender, EventArgs e)
+        {
+            rightPictureBox.Image = null;
+        }
+
+        private void rightPictureBox_MouseHover(object sender, EventArgs e)
+        {
+            if (rightPictureBox.Image != null)
+            {
+                toolTip.Active = true;
+                toolTip.SetToolTip(rightPictureBox, "Click to remove");
+            }
+            else
+            {
+                toolTip.Active = false;
+            }
         }
     }
 }
