@@ -8,18 +8,16 @@ namespace ImageFilters
     class AlphaTrimFilter
     {
         private byte[,] imageMatrix;
-        private PictureBox pictureBox;
-        private SortingType sortingType;
 
-        public AlphaTrimFilter(byte[,] imageMatrix, PictureBox pictureBox, SortingType sortingType)
+        public AlphaTrimFilter(byte[,] imageMatrix)
         {
             this.imageMatrix = (byte[,])imageMatrix.Clone();
-            this.pictureBox  = pictureBox;
-            this.sortingType = sortingType;
         }
 
-        public void removeNoise(int windowSize, int trimValue)
+        public byte[,] removeNoise(int windowSize, int trimValue, SortingType sortingType)
         {
+            byte[,] newImage = null;
+
             if (windowSize <= 1)
                 MessageBox.Show("The window size must be bigger than 1.", "Wrong Value", MessageBoxButtons.OK);
             else if (windowSize % 2 == 0)
@@ -27,10 +25,12 @@ namespace ImageFilters
             else if ((windowSize * windowSize) <= trimValue * 2)
                 MessageBox.Show("Too big trim value.", "Wrong Value", MessageBoxButtons.OK);
             else
-                removeNoiseRun(windowSize, trimValue);
+                newImage = removeNoiseRun(windowSize, trimValue, sortingType);
+
+            return newImage;
         }
 
-        private void removeNoiseRun(int windowSize, int trimValue)
+        private byte[,] removeNoiseRun(int windowSize, int trimValue, SortingType sortingType)
         {
             int windowStep = (windowSize - 1) / 2;
             int imageHeight = imageMatrix.GetLength(0);
@@ -52,8 +52,8 @@ namespace ImageFilters
                             window[m, k] = imageMatrix[n, l];        //Making a window
                         }
                     }
-                    
-                    byte[] newWindow = to1D(window);                 //Convert to 1D
+
+                    byte[] newWindow = ImageTools.to1D(window);      //Convert to 1D
 
                     if (sortingType == SortingType.BUILT_IN_SORT){   //Sort
                         Array.Sort(newWindow);
@@ -69,79 +69,17 @@ namespace ImageFilters
                         //Waiting...
                     }
 
-                    newWindow = exclude(newWindow, trimValue); //Exclude by trim (T)
-                    byte avg  = arrAverage(newWindow);         //Claculate average
+                    newWindow = ImageTools.exclude(newWindow, trimValue); //Exclude by trim (T)
+                    byte avg  = ImageTools.arrAverage(newWindow);         //Claculate average
 
                     //btnOpen.Text = avg.ToString();    //FOR TESTING ONLY. PERFORMANCE KILLER!
 
                     imageMatrix[i, j] = avg;            //Setting the damn value.
-                    pictureBox.Update();                //Updating the show. NOT necessary, but showy.
+                    //pictureBox.Update();              //Updating the show. NOT necessary, but showy.
                 }
             }
 
-            //Final display:
-            ImageOperations.DisplayImage(imageMatrix, pictureBox);
-        }
-
-
-
-        /* HELPING METHODS */
-
-        byte[] to1D(byte[,] array)
-        {
-            int arrayHeight = array.GetLength(0);
-            int arrayWidth = array.GetLength(1);
-            byte[] newArray = new byte[arrayWidth * arrayHeight];
-            int indexCounter = 0;
-
-            for (int i = 0; i < arrayHeight; i++)
-            {
-                for (int j = 0; j < arrayWidth; j++)
-                {
-                    newArray[indexCounter] = array[i, j];
-                    indexCounter++;
-                }
-            }
-
-            return newArray;
-        }
-
-        byte[] exclude(byte[] array, int T)
-        {
-            byte[] newArray = new byte[array.Length - (T * 2)];
-
-            for (int i = 0; i < newArray.Length; i++)
-            {
-                newArray[i] = array[T + i];
-            }
-
-            return newArray;
-        }
-
-        //byte calcAverage(byte[] array) {
-        //    byte avg = 0;
-        //    for (int i = 0; i < array.Length; i++) {
-        //        avg += array[i];
-        //    }
-
-        //    avg /= Convert.ToByte(array.Length);
-
-        //    return avg;
-        //}
-
-        public byte arrAverage(byte[] arr)
-        {
-            int sum = 0;
-            int average = 0;
-            int size = arr.Length;
-
-            for (int i = 0; i < size; i++)
-            {
-                sum += arr[i];
-            }
-            average = sum / size;
-
-            return Convert.ToByte(average);
+            return imageMatrix;
         }
     }
 }

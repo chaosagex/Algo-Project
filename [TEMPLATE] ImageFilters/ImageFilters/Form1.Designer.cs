@@ -28,6 +28,7 @@ namespace ImageFilters
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.leftPictureBox = new System.Windows.Forms.PictureBox();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnZGraph = new System.Windows.Forms.Button();
@@ -35,11 +36,11 @@ namespace ImageFilters
             this.numWindowSize_Alpha = new System.Windows.Forms.NumericUpDown();
             this.numTrimValue_Alpha = new System.Windows.Forms.NumericUpDown();
             this.grpbxAlphaTrim = new System.Windows.Forms.GroupBox();
-            this.lblWindowSize_Alpha = new System.Windows.Forms.Label();
-            this.lblTrimValue_Alpha = new System.Windows.Forms.Label();
             this.grpbxSortingType_Alpha = new System.Windows.Forms.GroupBox();
-            this.rdCountingSort_Alpha = new System.Windows.Forms.RadioButton();
             this.rdKthSort_Alpha = new System.Windows.Forms.RadioButton();
+            this.rdCountingSort_Alpha = new System.Windows.Forms.RadioButton();
+            this.lblTrimValue_Alpha = new System.Windows.Forms.Label();
+            this.lblWindowSize_Alpha = new System.Windows.Forms.Label();
             this.rightPictureBox = new System.Windows.Forms.PictureBox();
             this.grpbxAdaptiveMedian = new System.Windows.Forms.GroupBox();
             this.grpbxSortingType_Median = new System.Windows.Forms.GroupBox();
@@ -48,6 +49,7 @@ namespace ImageFilters
             this.lblWindowSize_Median = new System.Windows.Forms.Label();
             this.btnRemoveNoise_Median = new System.Windows.Forms.Button();
             this.numWindowSize_Median = new System.Windows.Forms.NumericUpDown();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.leftPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numWindowSize_Alpha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTrimValue_Alpha)).BeginInit();
@@ -67,7 +69,6 @@ namespace ImageFilters
             this.leftPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.leftPictureBox.TabIndex = 0;
             this.leftPictureBox.TabStop = false;
-            this.leftPictureBox.Click += new System.EventHandler(this.leftPictureBox_Click);
             // 
             // btnOpen
             // 
@@ -153,29 +154,6 @@ namespace ImageFilters
             this.grpbxAlphaTrim.TabIndex = 10;
             this.grpbxAlphaTrim.TabStop = false;
             this.grpbxAlphaTrim.Text = "Alpha-Trim";
-            this.grpbxAlphaTrim.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // lblWindowSize_Alpha
-            // 
-            this.lblWindowSize_Alpha.AutoSize = true;
-            this.lblWindowSize_Alpha.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.lblWindowSize_Alpha.Location = new System.Drawing.Point(17, 103);
-            this.lblWindowSize_Alpha.Name = "lblWindowSize_Alpha";
-            this.lblWindowSize_Alpha.Size = new System.Drawing.Size(69, 13);
-            this.lblWindowSize_Alpha.TabIndex = 10;
-            this.lblWindowSize_Alpha.Text = "Window Size";
-            this.lblWindowSize_Alpha.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblTrimValue_Alpha
-            // 
-            this.lblTrimValue_Alpha.AutoSize = true;
-            this.lblTrimValue_Alpha.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.lblTrimValue_Alpha.Location = new System.Drawing.Point(177, 103);
-            this.lblTrimValue_Alpha.Name = "lblTrimValue_Alpha";
-            this.lblTrimValue_Alpha.Size = new System.Drawing.Size(57, 13);
-            this.lblTrimValue_Alpha.TabIndex = 11;
-            this.lblTrimValue_Alpha.Text = "Trim Value";
-            this.lblTrimValue_Alpha.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // grpbxSortingType_Alpha
             // 
@@ -187,16 +165,6 @@ namespace ImageFilters
             this.grpbxSortingType_Alpha.TabIndex = 12;
             this.grpbxSortingType_Alpha.TabStop = false;
             this.grpbxSortingType_Alpha.Text = "Sorting Type";
-            // 
-            // rdCountingSort_Alpha
-            // 
-            this.rdCountingSort_Alpha.AutoSize = true;
-            this.rdCountingSort_Alpha.Location = new System.Drawing.Point(25, 21);
-            this.rdCountingSort_Alpha.Name = "rdCountingSort_Alpha";
-            this.rdCountingSort_Alpha.Size = new System.Drawing.Size(89, 17);
-            this.rdCountingSort_Alpha.TabIndex = 0;
-            this.rdCountingSort_Alpha.Text = "Counting Sort";
-            this.rdCountingSort_Alpha.UseVisualStyleBackColor = true;
             // 
             // rdKthSort_Alpha
             // 
@@ -210,6 +178,38 @@ namespace ImageFilters
             this.rdKthSort_Alpha.Text = "Kth Element";
             this.rdKthSort_Alpha.UseVisualStyleBackColor = true;
             // 
+            // rdCountingSort_Alpha
+            // 
+            this.rdCountingSort_Alpha.AutoSize = true;
+            this.rdCountingSort_Alpha.Location = new System.Drawing.Point(25, 21);
+            this.rdCountingSort_Alpha.Name = "rdCountingSort_Alpha";
+            this.rdCountingSort_Alpha.Size = new System.Drawing.Size(89, 17);
+            this.rdCountingSort_Alpha.TabIndex = 0;
+            this.rdCountingSort_Alpha.Text = "Counting Sort";
+            this.rdCountingSort_Alpha.UseVisualStyleBackColor = true;
+            // 
+            // lblTrimValue_Alpha
+            // 
+            this.lblTrimValue_Alpha.AutoSize = true;
+            this.lblTrimValue_Alpha.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.lblTrimValue_Alpha.Location = new System.Drawing.Point(177, 103);
+            this.lblTrimValue_Alpha.Name = "lblTrimValue_Alpha";
+            this.lblTrimValue_Alpha.Size = new System.Drawing.Size(57, 13);
+            this.lblTrimValue_Alpha.TabIndex = 11;
+            this.lblTrimValue_Alpha.Text = "Trim Value";
+            this.lblTrimValue_Alpha.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblWindowSize_Alpha
+            // 
+            this.lblWindowSize_Alpha.AutoSize = true;
+            this.lblWindowSize_Alpha.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.lblWindowSize_Alpha.Location = new System.Drawing.Point(17, 103);
+            this.lblWindowSize_Alpha.Name = "lblWindowSize_Alpha";
+            this.lblWindowSize_Alpha.Size = new System.Drawing.Size(69, 13);
+            this.lblWindowSize_Alpha.TabIndex = 10;
+            this.lblWindowSize_Alpha.Text = "Window Size";
+            this.lblWindowSize_Alpha.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // rightPictureBox
             // 
             this.rightPictureBox.Location = new System.Drawing.Point(466, 12);
@@ -218,6 +218,8 @@ namespace ImageFilters
             this.rightPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.rightPictureBox.TabIndex = 11;
             this.rightPictureBox.TabStop = false;
+            this.rightPictureBox.Click += new System.EventHandler(this.rightPictureBox_Click);
+            this.rightPictureBox.MouseHover += new System.EventHandler(this.rightPictureBox_MouseHover);
             // 
             // grpbxAdaptiveMedian
             // 
@@ -310,6 +312,10 @@ namespace ImageFilters
             0,
             0});
             // 
+            // toolTip
+            // 
+            this.toolTip.AutomaticDelay = 200;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -326,7 +332,6 @@ namespace ImageFilters
             this.Name = "mainForm";
             this.ShowIcon = false;
             this.Text = "Image Filters";
-            this.Load += new System.EventHandler(this.mainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.leftPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numWindowSize_Alpha)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTrimValue_Alpha)).EndInit();
@@ -366,6 +371,7 @@ namespace ImageFilters
         private System.Windows.Forms.Label lblWindowSize_Median;
         private System.Windows.Forms.Button btnRemoveNoise_Median;
         private System.Windows.Forms.NumericUpDown numWindowSize_Median;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
 
