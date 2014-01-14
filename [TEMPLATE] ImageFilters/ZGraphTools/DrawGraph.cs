@@ -16,6 +16,7 @@ namespace ZGraphTools
             int windowSize = 3;
             double[] x;
             double[] y;
+            double[] y2;
             int index = 0;
             int before;
             int after;
@@ -27,7 +28,7 @@ namespace ZGraphTools
                 
             x = new double[wMax];
             y = new double[wMax];
-                
+            y2 = new double[wMax];
             while (windowSize < wMax)
             {
                 if (g == Graph.ADAPTIVE_MEDIAN)
@@ -37,25 +38,38 @@ namespace ZGraphTools
                 }
                 else
                 {
-                    before = System.Environment.TickCount;
-
                     /*OPERATION*/
                     AlphaTrimFilter alphaTrim = new AlphaTrimFilter(dummyImage);    //Using a dummy/empty image here instead of 'ImageMatrix' (the real image object).
-
+ 
                     //Using KTH ELEMENT:
+                    before = System.Environment.TickCount;
                     alphaTrim.removeNoise(windowSize, 3, SortingType.KTH_ELEMENT);  /*The 3 here is the trim value, constant.*/
+                    after = System.Environment.TickCount;
+                    y[index] = after - before;
+
+                    alphaTrim = new AlphaTrimFilter(dummyImage);
 
                     //Using COUNTING SORT:
+                    before = System.Environment.TickCount;
                     alphaTrim.removeNoise(windowSize, 3, SortingType.COUNTING_SORT);
-                }
+                    after = System.Environment.TickCount;
+                    y2[index] = after - before;
                     
-                after = System.Environment.TickCount;
-                y[index] = after - before;
+                }
                 x[index] = windowSize;
                 windowSize += 2;
                 index++;
             }
-            z.add_curve("Name goes here", x, y, System.Drawing.Color.Black);
+            if (g == Graph.ADAPTIVE_MEDIAN)
+            {
+                 z.add_curve("Name goes here", x, y, System.Drawing.Color.Black);
+                 z.add_curve("Name goes here", x, y2, System.Drawing.Color.Crimson);
+            }
+            else
+            {
+                 z.add_curve("Kth Element", x, y, System.Drawing.Color.Black);
+                 z.add_curve("Counting Sort", x, y2, System.Drawing.Color.Crimson);
+            }
         }
     }
 }
