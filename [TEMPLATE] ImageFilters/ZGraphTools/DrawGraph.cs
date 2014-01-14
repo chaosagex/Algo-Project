@@ -10,7 +10,7 @@ namespace ZGraphTools
     {
         public void draw(int wMax, Graph g)
         {
-            byte[,] dummyImage = new byte[50, 50];  //A dummy image of size 50×50px to use in filtering.
+            byte[,] dummyImage = ImageOperations.OpenImage("..\\..\\..\\..\\More Images\\tiger.png");  //Using the "tiger" image as a dummy image to use in filtering.
 
             ZGraphForm z;
             int windowSize = 3;
@@ -46,8 +46,6 @@ namespace ZGraphTools
                     alphaTrim.removeNoise(windowSize, 3, SortingType.KTH_ELEMENT);  /*The 3 here is the trim value, constant.*/
                     after = System.Environment.TickCount;
                     y[index] = after - before;
-
-                    alphaTrim = new AlphaTrimFilter(dummyImage);
 
                     //Using COUNTING SORT:
                     before = System.Environment.TickCount;
