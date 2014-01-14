@@ -21,12 +21,13 @@ namespace ZGraphTools
             int index = 0;
             int before;
             int after;
+            int size = ((wMax - 3) / 2)+1;
                 
             if (g == Graph.ADAPTIVE_MEDIAN)
                 z = new ZGraphForm("Adaptive Median", "Window Size", "Time");
             else
                 z = new ZGraphForm("Alpha Trim", "Window Size", "Time");
-            int size = (wMax-3) / 2;
+            
             x = new double[size];
             y = new double[size];
             y2 = new double[size];
