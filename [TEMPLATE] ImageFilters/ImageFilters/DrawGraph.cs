@@ -31,7 +31,7 @@ namespace ZGraphTools
             y = new double[size];
             y2 = new double[size];
              
-            while (windowSize < wMax)
+            while (windowSize <= wMax)
             {
                 if (g == Graph.ADAPTIVE_MEDIAN)
                 {
