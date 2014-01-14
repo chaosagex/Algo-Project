@@ -47,6 +47,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DrawGraph.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Graphs.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ZGraphClass.cs" />
     <Compile Include="ZGraphForm.cs">
@@ -60,6 +66,12 @@
     <EmbeddedResource Include="ZGraphForm.resx">
       <DependentUpon>ZGraphForm.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImageFilters\ImageFilters.csproj">
+      <Project>{543720d9-2c94-4048-bdcc-9025f2fb23cb}</Project>
+      <Name>ImageFilters</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ImageFilters
 {
-    enum SortingType
+    public enum SortingType
     {
         BUILT_IN_SORT = 0,
         COUNTING_SORT = 1,

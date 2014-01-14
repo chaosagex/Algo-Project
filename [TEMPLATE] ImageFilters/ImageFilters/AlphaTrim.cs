@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace ImageFilters
 {
-    class AlphaTrimFilter
+    public class AlphaTrimFilter
     {
         private byte[,] imageMatrix;
 
