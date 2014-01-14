@@ -47,12 +47,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DrawGraph.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Graphs.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ZGraphClass.cs" />
     <Compile Include="ZGraphForm.cs">

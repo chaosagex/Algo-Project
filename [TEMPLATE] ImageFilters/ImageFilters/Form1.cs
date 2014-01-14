@@ -46,10 +46,11 @@ namespace ImageFilters
             }
 
             //Create a graph and add two curves to it
-            ZGraphForm ZGF = new ZGraphForm("Sample Graph", "N", "f(N)");
-            ZGF.add_curve("f(N) = N", x_values, y_values_N, Color.Red);
-            ZGF.add_curve("f(N) = N Log(N)", x_values, y_values_NLogN, Color.Blue);
-            ZGF.Show();
+            //ZGraphForm ZGF = new ZGraphForm("Sample Graph", "N", "f(N)");
+            //ZGF.add_curve("f(N) = N", x_values, y_values_N, Color.Red);
+            //ZGF.add_curve("f(N) = N Log(N)", x_values, y_values_NLogN, Color.Blue);
+            //ZGF.Show();
+            DrawGraph.draw((int)numMaxWindow_Graph.Value,Graph.ALPHA_TRIM);
         }
 
         private void btnRemoveNoise_Alpha_Click(object sender, EventArgs e)

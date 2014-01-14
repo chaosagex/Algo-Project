@@ -74,12 +74,14 @@
   <ItemGroup>
     <Compile Include="AlphaTrim.cs" />
     <Compile Include="CountingSort.cs" />
+    <Compile Include="DrawGraph.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Graphs.cs" />
     <Compile Include="ImageOperations.cs" />
     <Compile Include="ImageTools.cs" />
     <Compile Include="KthElement.cs" />
