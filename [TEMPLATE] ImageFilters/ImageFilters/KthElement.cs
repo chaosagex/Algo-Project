@@ -4,10 +4,9 @@ using System.Text;
 
 namespace Sort
 {
-     class kth_element
+     class KthElement
      {
-
-          private void sort(ref byte[] arr, int k)
+          public static byte[] sort(ref byte[] arr, int k)
           {
                int index;
                int begin = 0;
@@ -21,12 +20,10 @@ namespace Sort
                     Swap(ref arr[index], ref arr[end]);
                     end--;
                }
-               byte[] temp = new byte[end + 1];
-               Array.Copy(arr, temp, end + 1);
-               arr = temp;
+               return arr;
           }
 
-          private int smallest(ref byte[] arr, int begin, int end)
+          private static int smallest(ref byte[] arr, int begin, int end)
           {
                if (begin + 1 == end)
                {
@@ -45,8 +42,9 @@ namespace Sort
                     while (arr[i] <= arr[pivot])
                     {
                          if (i == end)
-                              return smallest(ref arr, begin + 1, j); ;
-                         i++;
+                              return smallest(ref arr, begin + 1, j);
+                         else
+                              i++;
                     }
                     while (arr[j] > arr[pivot])
                          j--;
@@ -56,7 +54,7 @@ namespace Sort
                Swap(ref arr[j], ref arr[pivot]);
                return smallest(ref arr, begin, j);
           }
-          private int largest(ref byte[] arr, int begin, int end)
+          private static int largest(ref byte[] arr, int begin, int end)
           {
                if (begin + 1 == end)
                {
@@ -76,7 +74,8 @@ namespace Sort
                     {
                          if (i == end)
                               return pivot;
-                         i++;
+                         else
+                              i++;
                     }
                     while (arr[j] > arr[pivot])
                          j--;
