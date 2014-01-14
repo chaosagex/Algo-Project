@@ -6,22 +6,12 @@ namespace Sort
 {
      class kth_element
      {
-          private byte[] arr;
-          private int k = 0;
 
-          public kth_element(ref byte[] arr, int k)
-          {
-               // TODO: Complete member initialization
-               this.arr = arr;
-               this.k = k;
-               update();
-          }
-
-          private void update()
+          private void sort(ref byte[] arr, int k)
           {
                int index;
-               int begin=0;
-               int end=arr.Length-1;
+               int begin = 0;
+               int end = arr.Length - 1;
                for (int l = 0; l < k; l++)
                {
                     index = smallest(ref arr, begin, end);
@@ -31,8 +21,8 @@ namespace Sort
                     Swap(ref arr[index], ref arr[end]);
                     end--;
                }
-               byte[] temp = new byte[end+1];
-               Array.Copy(arr, temp, end+1);
+               byte[] temp = new byte[end + 1];
+               Array.Copy(arr, temp, end + 1);
                arr = temp;
           }
 
@@ -47,7 +37,7 @@ namespace Sort
                }
                if (begin == end)
                     return end;
-               int i = begin+1;
+               int i = begin + 1;
                int j = end;
                int pivot = begin;
                while (j > i)
@@ -55,7 +45,7 @@ namespace Sort
                     while (arr[i] <= arr[pivot])
                     {
                          if (i == end)
-                              return smallest(ref arr, begin+1, j); ;
+                              return smallest(ref arr, begin + 1, j); ;
                          i++;
                     }
                     while (arr[j] > arr[pivot])
@@ -75,9 +65,9 @@ namespace Sort
                     else
                          return begin;
                }
-               if(begin==end)
+               if (begin == end)
                     return end;
-               int i = begin+1;
+               int i = begin + 1;
                int j = end;
                int pivot = begin;
                while (j > i)
@@ -94,7 +84,7 @@ namespace Sort
                          Swap(ref arr[i], ref arr[j]);
                }
                Swap(ref arr[j], ref arr[pivot]);
-               return largest(ref arr,j+1,end);
+               return largest(ref arr, j + 1, end);
           }
           public static void Swap<T>(ref T lhs, ref T rhs)
           {
