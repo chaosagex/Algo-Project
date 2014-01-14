@@ -18,7 +18,7 @@ namespace Sort
 					right--;
 
                     if (left < right)
-                         kth_element.Swap(ref numbers[left], ref numbers[right]);
+                        KthElement.Swap(ref numbers[left], ref numbers[right]);
                     else
                     {
                          return right;

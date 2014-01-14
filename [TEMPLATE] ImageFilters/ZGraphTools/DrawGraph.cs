@@ -33,17 +33,20 @@ namespace ZGraphTools
                 if (g == Graph.ADAPTIVE_MEDIAN)
                 {
                     before = System.Environment.TickCount;
-                    
-                    //Operation code:
-                    SortingType sortingType = SortingType.KTH_ELEMENT;
-                    AlphaTrimFilter alphaTrim = new AlphaTrimFilter(dummyImage);    //Using a dummy/empty image here instead of 'ImageMatrix' (the real image object).
-                    alphaTrim.removeNoise(windowSize, 3, sortingType);              /*The 3 here is the trim value, constant.
-                                                                                      The KTH_ELEMENT will be constant too, until we decide otherwise.*/
+                    //operation code  
                 }
                 else
                 {
                     before = System.Environment.TickCount;
-                    //operation code  
+
+                    /*OPERATION*/
+                    AlphaTrimFilter alphaTrim = new AlphaTrimFilter(dummyImage);    //Using a dummy/empty image here instead of 'ImageMatrix' (the real image object).
+
+                    //Using KTH ELEMENT:
+                    alphaTrim.removeNoise(windowSize, 3, SortingType.KTH_ELEMENT);  /*The 3 here is the trim value, constant.*/
+
+                    //Using COUNTING SORT:
+                    alphaTrim.removeNoise(windowSize, 3, SortingType.COUNTING_SORT);
                 }
                     
                 after = System.Environment.TickCount;

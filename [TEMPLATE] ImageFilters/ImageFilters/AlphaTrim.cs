@@ -59,10 +59,10 @@ namespace ImageFilters
                         Array.Sort(newWindow);
                     }
                     else if (sortingType == SortingType.KTH_ELEMENT){
-                        Sort.kth_element kthSort = new Sort.kth_element(ref newWindow, trimValue);
+                        newWindow = Sort.KthElement.sort(ref newWindow, trimValue);
                     }
                     else if (sortingType == SortingType.COUNTING_SORT){
-                        //newWindow = Sort.countingsort.CountingSort(newWindow);
+                        newWindow = Sort.CountingSort.sort(newWindow);
                     }
                     else
                     {
