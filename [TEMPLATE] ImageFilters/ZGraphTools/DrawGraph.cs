@@ -11,6 +11,7 @@ namespace ZGraphTools
         public void draw(int wMax, Graph g)
         {
             byte[,] dummyImage = ImageOperations.OpenImage("..\\..\\..\\..\\More Images\\tiger.png");  //Using the "tiger" image as a dummy image to use in filtering.
+            //Call: "(int)numMaxWindow_Graph.Value" as wMax value when you call this method (draw).
 
             ZGraphForm z;
             int windowSize = 3;

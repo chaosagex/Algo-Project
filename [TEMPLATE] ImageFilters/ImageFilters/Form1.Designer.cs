@@ -50,6 +50,8 @@ namespace ImageFilters
             this.btnRemoveNoise_Median = new System.Windows.Forms.Button();
             this.numWindowSize_Median = new System.Windows.Forms.NumericUpDown();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.lblMaxWindow_Graph = new System.Windows.Forms.Label();
+            this.numMaxWindow_Graph = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.leftPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numWindowSize_Alpha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTrimValue_Alpha)).BeginInit();
@@ -59,6 +61,7 @@ namespace ImageFilters
             this.grpbxAdaptiveMedian.SuspendLayout();
             this.grpbxSortingType_Median.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numWindowSize_Median)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMaxWindow_Graph)).BeginInit();
             this.SuspendLayout();
             // 
             // leftPictureBox
@@ -73,7 +76,7 @@ namespace ImageFilters
             // btnOpen
             // 
             this.btnOpen.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpen.Location = new System.Drawing.Point(394, 461);
+            this.btnOpen.Location = new System.Drawing.Point(394, 447);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(126, 62);
             this.btnOpen.TabIndex = 2;
@@ -84,7 +87,7 @@ namespace ImageFilters
             // btnZGraph
             // 
             this.btnZGraph.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnZGraph.Location = new System.Drawing.Point(394, 529);
+            this.btnZGraph.Location = new System.Drawing.Point(394, 521);
             this.btnZGraph.Name = "btnZGraph";
             this.btnZGraph.Size = new System.Drawing.Size(126, 30);
             this.btnZGraph.TabIndex = 3;
@@ -110,6 +113,11 @@ namespace ImageFilters
             0,
             0});
             this.numWindowSize_Alpha.Location = new System.Drawing.Point(89, 100);
+            this.numWindowSize_Alpha.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numWindowSize_Alpha.Minimum = new decimal(new int[] {
             3,
             0,
@@ -296,6 +304,11 @@ namespace ImageFilters
             0,
             0});
             this.numWindowSize_Median.Location = new System.Drawing.Point(114, 100);
+            this.numWindowSize_Median.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numWindowSize_Median.Minimum = new decimal(new int[] {
             3,
             0,
@@ -316,12 +329,54 @@ namespace ImageFilters
             // 
             this.toolTip.AutomaticDelay = 200;
             // 
+            // lblMaxWindow_Graph
+            // 
+            this.lblMaxWindow_Graph.AutoSize = true;
+            this.lblMaxWindow_Graph.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.lblMaxWindow_Graph.Location = new System.Drawing.Point(341, 558);
+            this.lblMaxWindow_Graph.Name = "lblMaxWindow_Graph";
+            this.lblMaxWindow_Graph.Size = new System.Drawing.Size(95, 13);
+            this.lblMaxWindow_Graph.TabIndex = 14;
+            this.lblMaxWindow_Graph.Text = "Max. Window Size";
+            this.lblMaxWindow_Graph.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // numMaxWindow_Graph
+            // 
+            this.numMaxWindow_Graph.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numMaxWindow_Graph.Location = new System.Drawing.Point(439, 555);
+            this.numMaxWindow_Graph.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numMaxWindow_Graph.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numMaxWindow_Graph.Name = "numMaxWindow_Graph";
+            this.numMaxWindow_Graph.Size = new System.Drawing.Size(36, 20);
+            this.numMaxWindow_Graph.TabIndex = 13;
+            this.numMaxWindow_Graph.Tag = "";
+            this.numMaxWindow_Graph.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numMaxWindow_Graph.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 595);
+            this.Controls.Add(this.lblMaxWindow_Graph);
             this.Controls.Add(this.grpbxAdaptiveMedian);
+            this.Controls.Add(this.numMaxWindow_Graph);
             this.Controls.Add(this.rightPictureBox);
             this.Controls.Add(this.grpbxAlphaTrim);
             this.Controls.Add(this.btnZGraph);
@@ -345,7 +400,9 @@ namespace ImageFilters
             this.grpbxSortingType_Median.ResumeLayout(false);
             this.grpbxSortingType_Median.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numWindowSize_Median)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMaxWindow_Graph)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -372,6 +429,8 @@ namespace ImageFilters
         private System.Windows.Forms.Button btnRemoveNoise_Median;
         private System.Windows.Forms.NumericUpDown numWindowSize_Median;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.Label lblMaxWindow_Graph;
+        private System.Windows.Forms.NumericUpDown numMaxWindow_Graph;
     }
 }
 
