@@ -33,17 +33,17 @@ namespace ImageFilters
         private void btnZGraph_Click(object sender, EventArgs e)
         {
             // Make up some data points from the N, N log(N) functions
-            int N = 40;
-            double[] x_values = new double[N];
-            double[] y_values_N = new double[N];
-            double[] y_values_NLogN = new double[N];
+            //int N = 40;
+            //double[] x_values = new double[N];
+            //double[] y_values_N = new double[N];
+            //double[] y_values_NLogN = new double[N];
 
-            for (int i = 0; i < N; i++)
-            {
-                x_values[i] = i;
-                y_values_N[i] = i;
-                y_values_NLogN[i] = i * Math.Log(i);
-            }
+            //for (int i = 0; i < N; i++)
+            //{
+            //    x_values[i] = i;
+            //    y_values_N[i] = i;
+            //    y_values_NLogN[i] = i * Math.Log(i);
+            //}
 
             //Create a graph and add two curves to it
             //ZGraphForm ZGF = new ZGraphForm("Sample Graph", "N", "f(N)");
