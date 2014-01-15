@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ZGraphTools
 {
-     enum Graph
+     enum GraphType
      {
           ALPHA_TRIM = 0,
           ADAPTIVE_MEDIAN = 1

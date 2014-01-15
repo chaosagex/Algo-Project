@@ -8,7 +8,7 @@ namespace ZGraphTools
 {
     class DrawGraph
     {
-        public static void draw(int wMax, Graph g)
+        public static void draw(int wMax, GraphType g)
         {
             byte[,] dummyImage = ImageOperations.OpenImage("..\\..\\..\\..\\More Images\\tiger.png");  //Using the "tiger" image as a dummy image to use in filtering.
             //Call: "(int)numMaxWindow_Graph.Value" as wMax value when you call this method (draw).
@@ -23,7 +23,7 @@ namespace ZGraphTools
             int after;
             int size = ((wMax - 3) / 2)+1;
                 
-            if (g == Graph.ADAPTIVE_MEDIAN)
+            if (g == GraphType.ADAPTIVE_MEDIAN)
                 z = new ZGraphForm("Adaptive Median", "Window Size", "Time");
             else
                 z = new ZGraphForm("Alpha Trim", "Window Size", "Time");
@@ -34,7 +34,7 @@ namespace ZGraphTools
              
             while (windowSize <= wMax)
             {
-                if (g == Graph.ADAPTIVE_MEDIAN)
+                if (g == GraphType.ADAPTIVE_MEDIAN)
                 {
                     before = System.Environment.TickCount;
                     //operation code  
@@ -61,7 +61,7 @@ namespace ZGraphTools
                 windowSize += 2;
                 index++;
             }
-            if (g == Graph.ADAPTIVE_MEDIAN)
+            if (g == GraphType.ADAPTIVE_MEDIAN)
             {
                  z.add_curve("Name goes here", x, y, System.Drawing.Color.Black);
                  z.add_curve("Name goes here", x, y2, System.Drawing.Color.Crimson);

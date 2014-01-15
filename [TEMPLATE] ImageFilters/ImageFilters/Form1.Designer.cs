@@ -52,6 +52,8 @@ namespace ImageFilters
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.lblMaxWindow_Graph = new System.Windows.Forms.Label();
             this.numMaxWindow_Graph = new System.Windows.Forms.NumericUpDown();
+            this.cmbZGraph = new System.Windows.Forms.ComboBox();
+            this.grpbxZGraph = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.leftPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numWindowSize_Alpha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTrimValue_Alpha)).BeginInit();
@@ -62,6 +64,7 @@ namespace ImageFilters
             this.grpbxSortingType_Median.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numWindowSize_Median)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxWindow_Graph)).BeginInit();
+            this.grpbxZGraph.SuspendLayout();
             this.SuspendLayout();
             // 
             // leftPictureBox
@@ -76,7 +79,7 @@ namespace ImageFilters
             // btnOpen
             // 
             this.btnOpen.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpen.Location = new System.Drawing.Point(394, 447);
+            this.btnOpen.Location = new System.Drawing.Point(394, 436);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(126, 62);
             this.btnOpen.TabIndex = 2;
@@ -87,19 +90,19 @@ namespace ImageFilters
             // btnZGraph
             // 
             this.btnZGraph.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnZGraph.Location = new System.Drawing.Point(394, 521);
+            this.btnZGraph.Location = new System.Drawing.Point(59, 22);
             this.btnZGraph.Name = "btnZGraph";
             this.btnZGraph.Size = new System.Drawing.Size(126, 30);
             this.btnZGraph.TabIndex = 3;
-            this.btnZGraph.Text = "Z Graph";
+            this.btnZGraph.Text = "Build Graph";
             this.btnZGraph.UseVisualStyleBackColor = true;
             this.btnZGraph.Click += new System.EventHandler(this.btnZGraph_Click);
             // 
             // btnRemoveNoise_Alpha
             // 
-            this.btnRemoveNoise_Alpha.Location = new System.Drawing.Point(88, 123);
+            this.btnRemoveNoise_Alpha.Location = new System.Drawing.Point(85, 146);
             this.btnRemoveNoise_Alpha.Name = "btnRemoveNoise_Alpha";
-            this.btnRemoveNoise_Alpha.Size = new System.Drawing.Size(87, 23);
+            this.btnRemoveNoise_Alpha.Size = new System.Drawing.Size(87, 32);
             this.btnRemoveNoise_Alpha.TabIndex = 6;
             this.btnRemoveNoise_Alpha.Text = "Remove Noise";
             this.btnRemoveNoise_Alpha.UseVisualStyleBackColor = true;
@@ -112,7 +115,7 @@ namespace ImageFilters
             0,
             0,
             0});
-            this.numWindowSize_Alpha.Location = new System.Drawing.Point(89, 100);
+            this.numWindowSize_Alpha.Location = new System.Drawing.Point(85, 120);
             this.numWindowSize_Alpha.Maximum = new decimal(new int[] {
             500,
             0,
@@ -136,7 +139,7 @@ namespace ImageFilters
             // 
             // numTrimValue_Alpha
             // 
-            this.numTrimValue_Alpha.Location = new System.Drawing.Point(138, 100);
+            this.numTrimValue_Alpha.Location = new System.Drawing.Point(134, 120);
             this.numTrimValue_Alpha.Name = "numTrimValue_Alpha";
             this.numTrimValue_Alpha.Size = new System.Drawing.Size(36, 20);
             this.numTrimValue_Alpha.TabIndex = 9;
@@ -158,7 +161,7 @@ namespace ImageFilters
             this.grpbxAlphaTrim.Controls.Add(this.numWindowSize_Alpha);
             this.grpbxAlphaTrim.Location = new System.Drawing.Point(12, 428);
             this.grpbxAlphaTrim.Name = "grpbxAlphaTrim";
-            this.grpbxAlphaTrim.Size = new System.Drawing.Size(263, 156);
+            this.grpbxAlphaTrim.Size = new System.Drawing.Size(263, 201);
             this.grpbxAlphaTrim.TabIndex = 10;
             this.grpbxAlphaTrim.TabStop = false;
             this.grpbxAlphaTrim.Text = "Alpha-Trim";
@@ -167,7 +170,7 @@ namespace ImageFilters
             // 
             this.grpbxSortingType_Alpha.Controls.Add(this.rdKthSort_Alpha);
             this.grpbxSortingType_Alpha.Controls.Add(this.rdCountingSort_Alpha);
-            this.grpbxSortingType_Alpha.Location = new System.Drawing.Point(64, 19);
+            this.grpbxSortingType_Alpha.Location = new System.Drawing.Point(62, 32);
             this.grpbxSortingType_Alpha.Name = "grpbxSortingType_Alpha";
             this.grpbxSortingType_Alpha.Size = new System.Drawing.Size(134, 71);
             this.grpbxSortingType_Alpha.TabIndex = 12;
@@ -200,7 +203,7 @@ namespace ImageFilters
             // 
             this.lblTrimValue_Alpha.AutoSize = true;
             this.lblTrimValue_Alpha.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.lblTrimValue_Alpha.Location = new System.Drawing.Point(177, 103);
+            this.lblTrimValue_Alpha.Location = new System.Drawing.Point(173, 123);
             this.lblTrimValue_Alpha.Name = "lblTrimValue_Alpha";
             this.lblTrimValue_Alpha.Size = new System.Drawing.Size(57, 13);
             this.lblTrimValue_Alpha.TabIndex = 11;
@@ -211,7 +214,7 @@ namespace ImageFilters
             // 
             this.lblWindowSize_Alpha.AutoSize = true;
             this.lblWindowSize_Alpha.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.lblWindowSize_Alpha.Location = new System.Drawing.Point(17, 103);
+            this.lblWindowSize_Alpha.Location = new System.Drawing.Point(13, 123);
             this.lblWindowSize_Alpha.Name = "lblWindowSize_Alpha";
             this.lblWindowSize_Alpha.Size = new System.Drawing.Size(69, 13);
             this.lblWindowSize_Alpha.TabIndex = 10;
@@ -237,7 +240,7 @@ namespace ImageFilters
             this.grpbxAdaptiveMedian.Controls.Add(this.numWindowSize_Median);
             this.grpbxAdaptiveMedian.Location = new System.Drawing.Point(639, 428);
             this.grpbxAdaptiveMedian.Name = "grpbxAdaptiveMedian";
-            this.grpbxAdaptiveMedian.Size = new System.Drawing.Size(263, 156);
+            this.grpbxAdaptiveMedian.Size = new System.Drawing.Size(263, 201);
             this.grpbxAdaptiveMedian.TabIndex = 13;
             this.grpbxAdaptiveMedian.TabStop = false;
             this.grpbxAdaptiveMedian.Text = "Adaptive Median";
@@ -246,7 +249,7 @@ namespace ImageFilters
             // 
             this.grpbxSortingType_Median.Controls.Add(this.rdQuickSort_Median);
             this.grpbxSortingType_Median.Controls.Add(this.rdCountingSort_Median);
-            this.grpbxSortingType_Median.Location = new System.Drawing.Point(64, 19);
+            this.grpbxSortingType_Median.Location = new System.Drawing.Point(62, 32);
             this.grpbxSortingType_Median.Name = "grpbxSortingType_Median";
             this.grpbxSortingType_Median.Size = new System.Drawing.Size(134, 71);
             this.grpbxSortingType_Median.TabIndex = 12;
@@ -279,7 +282,7 @@ namespace ImageFilters
             // 
             this.lblWindowSize_Median.AutoSize = true;
             this.lblWindowSize_Median.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.lblWindowSize_Median.Location = new System.Drawing.Point(16, 103);
+            this.lblWindowSize_Median.Location = new System.Drawing.Point(16, 123);
             this.lblWindowSize_Median.Name = "lblWindowSize_Median";
             this.lblWindowSize_Median.Size = new System.Drawing.Size(95, 13);
             this.lblWindowSize_Median.TabIndex = 10;
@@ -288,9 +291,9 @@ namespace ImageFilters
             // 
             // btnRemoveNoise_Median
             // 
-            this.btnRemoveNoise_Median.Location = new System.Drawing.Point(88, 123);
+            this.btnRemoveNoise_Median.Location = new System.Drawing.Point(85, 146);
             this.btnRemoveNoise_Median.Name = "btnRemoveNoise_Median";
-            this.btnRemoveNoise_Median.Size = new System.Drawing.Size(87, 23);
+            this.btnRemoveNoise_Median.Size = new System.Drawing.Size(87, 32);
             this.btnRemoveNoise_Median.TabIndex = 6;
             this.btnRemoveNoise_Median.Text = "Remove Noise";
             this.btnRemoveNoise_Median.UseVisualStyleBackColor = true;
@@ -303,7 +306,7 @@ namespace ImageFilters
             0,
             0,
             0});
-            this.numWindowSize_Median.Location = new System.Drawing.Point(114, 100);
+            this.numWindowSize_Median.Location = new System.Drawing.Point(114, 120);
             this.numWindowSize_Median.Maximum = new decimal(new int[] {
             500,
             0,
@@ -333,7 +336,7 @@ namespace ImageFilters
             // 
             this.lblMaxWindow_Graph.AutoSize = true;
             this.lblMaxWindow_Graph.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.lblMaxWindow_Graph.Location = new System.Drawing.Point(341, 558);
+            this.lblMaxWindow_Graph.Location = new System.Drawing.Point(6, 85);
             this.lblMaxWindow_Graph.Name = "lblMaxWindow_Graph";
             this.lblMaxWindow_Graph.Size = new System.Drawing.Size(95, 13);
             this.lblMaxWindow_Graph.TabIndex = 14;
@@ -347,14 +350,14 @@ namespace ImageFilters
             0,
             0,
             0});
-            this.numMaxWindow_Graph.Location = new System.Drawing.Point(439, 555);
+            this.numMaxWindow_Graph.Location = new System.Drawing.Point(104, 82);
             this.numMaxWindow_Graph.Maximum = new decimal(new int[] {
             500,
             0,
             0,
             0});
             this.numMaxWindow_Graph.Minimum = new decimal(new int[] {
-            3,
+            5,
             0,
             0,
             0});
@@ -364,22 +367,47 @@ namespace ImageFilters
             this.numMaxWindow_Graph.Tag = "";
             this.numMaxWindow_Graph.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numMaxWindow_Graph.Value = new decimal(new int[] {
-            3,
+            5,
             0,
             0,
             0});
+            // 
+            // cmbZGraph
+            // 
+            this.cmbZGraph.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbZGraph.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbZGraph.FormattingEnabled = true;
+            this.cmbZGraph.Items.AddRange(new object[] {
+            "Alpha-Trim",
+            "Adaptive Median"});
+            this.cmbZGraph.Location = new System.Drawing.Point(60, 56);
+            this.cmbZGraph.Name = "cmbZGraph";
+            this.cmbZGraph.Size = new System.Drawing.Size(124, 21);
+            this.cmbZGraph.TabIndex = 15;
+            this.cmbZGraph.SelectedIndex = 0;   //Setting default value.
+            // 
+            // grpbxZGraph
+            // 
+            this.grpbxZGraph.Controls.Add(this.numMaxWindow_Graph);
+            this.grpbxZGraph.Controls.Add(this.cmbZGraph);
+            this.grpbxZGraph.Controls.Add(this.btnZGraph);
+            this.grpbxZGraph.Controls.Add(this.lblMaxWindow_Graph);
+            this.grpbxZGraph.Location = new System.Drawing.Point(335, 516);
+            this.grpbxZGraph.Name = "grpbxZGraph";
+            this.grpbxZGraph.Size = new System.Drawing.Size(246, 113);
+            this.grpbxZGraph.TabIndex = 16;
+            this.grpbxZGraph.TabStop = false;
+            this.grpbxZGraph.Text = "Graph Tools";
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 595);
-            this.Controls.Add(this.lblMaxWindow_Graph);
+            this.ClientSize = new System.Drawing.Size(914, 641);
+            this.Controls.Add(this.grpbxZGraph);
             this.Controls.Add(this.grpbxAdaptiveMedian);
-            this.Controls.Add(this.numMaxWindow_Graph);
             this.Controls.Add(this.rightPictureBox);
             this.Controls.Add(this.grpbxAlphaTrim);
-            this.Controls.Add(this.btnZGraph);
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.leftPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -401,8 +429,9 @@ namespace ImageFilters
             this.grpbxSortingType_Median.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numWindowSize_Median)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxWindow_Graph)).EndInit();
+            this.grpbxZGraph.ResumeLayout(false);
+            this.grpbxZGraph.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -431,6 +460,8 @@ namespace ImageFilters
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Label lblMaxWindow_Graph;
         private System.Windows.Forms.NumericUpDown numMaxWindow_Graph;
+        private System.Windows.Forms.ComboBox cmbZGraph;
+        private System.Windows.Forms.GroupBox grpbxZGraph;
     }
 }
 

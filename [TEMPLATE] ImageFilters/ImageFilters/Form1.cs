@@ -50,7 +50,18 @@ namespace ImageFilters
             //ZGF.add_curve("f(N) = N", x_values, y_values_N, Color.Red);
             //ZGF.add_curve("f(N) = N Log(N)", x_values, y_values_NLogN, Color.Blue);
             //ZGF.Show();
-            DrawGraph.draw((int)numMaxWindow_Graph.Value,Graph.ALPHA_TRIM);
+
+            GraphType graphType;
+            int wMax = (int)numMaxWindow_Graph.Value;
+
+            if (cmbZGraph.SelectedIndex.Equals(0)){  //Alpha-Trim is choosen
+                graphType = GraphType.ALPHA_TRIM;
+            }
+            else{
+                graphType = GraphType.ADAPTIVE_MEDIAN;
+            }
+            
+            DrawGraph.draw(wMax, graphType);
         }
 
         private void btnRemoveNoise_Alpha_Click(object sender, EventArgs e)
