@@ -69,11 +69,7 @@ namespace ImageFilters
             int windowSize = (int)numWindowSize_Alpha.Value;
             int trimValue  = (int)numTrimValue_Alpha.Value;
 
-            if (ImageMatrix == null)
-            {
-                MessageBox.Show("Please choose an image first.", "No Input", MessageBoxButtons.OK);
-            }
-            else
+            if(!imageIsNull())
             {
                 SortingType sortingType;
                 byte[,] filteredImage;
@@ -101,7 +97,44 @@ namespace ImageFilters
 
         private void btnRemoveNoise_Median_Click(object sender, EventArgs e)
         {
-            //The click event handler for Median Filter button.
+            int windowMaxSize = (int)numWindowSize_Median.Value;
+
+            if(!imageIsNull())
+            {
+                SortingType sortingType;
+                byte[,] filteredImage;
+                AdaptiveMedianFilter adapMedian = new AdaptiveMedianFilter(ImageMatrix, windowMaxSize);
+
+                if (rdQuickSort_Median.Checked)
+                    sortingType = SortingType.QUICK_SORT;
+                else if (rdCountingSort_Median.Checked)
+                    sortingType = SortingType.COUNTING_SORT;
+                else
+                    sortingType = SortingType.BUILT_IN_SORT;
+
+                adapMedian.Filter(sortingType); //Filter...
+
+                if (ImageMatrix != null)  //No problem catched in 'removeNoise'.
+                {
+                    //Improving borders:
+                    filteredImage = ImageTools.initArray(ImageMatrix, windowMaxSize);
+
+                    //Final display:
+                    ImageOperations.DisplayImage(filteredImage, rightPictureBox);
+                }
+            }
+        }
+
+        private bool imageIsNull()
+        {
+            if (ImageMatrix == null)
+            {
+                MessageBox.Show("Please choose an image first.", "No Input", MessageBoxButtons.OK);
+                return true;
+            }
+            else{
+                return false;
+            }
         }
 
         private void rightPictureBox_Click(object sender, EventArgs e)
