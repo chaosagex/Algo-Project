@@ -36,8 +36,23 @@ namespace ZGraphTools
             {
                 if (g == GraphType.ADAPTIVE_MEDIAN)
                 {
-                    before = System.Environment.TickCount;
-                    //operation code  
+                     for (int i = 3; i < wMax; i = i + 2)
+                     {
+                          //using counting sort
+                          before = System.Environment.TickCount;
+                          AdaptiveMedianFilter adptvMdin = new AdaptiveMedianFilter(dummyImage, i);
+                          adptvMdin.Filter(SortingType.COUNTING_SORT);
+                          after = System.Environment.TickCount;
+                          x[(i / 2) - 1] = after - before;
+                          y[(i / 2) - 1] = after - before;
+
+                          //using Quik sort
+                          before = System.Environment.TickCount;
+                          adptvMdin = new AdaptiveMedianFilter(dummyImage, i);
+                          adptvMdin.Filter(SortingType.QUICK_SORT);
+                          after = System.Environment.TickCount;
+                          y2[(i / 2) - 1] = after - before;
+                     }
                 }
                 else
                 {

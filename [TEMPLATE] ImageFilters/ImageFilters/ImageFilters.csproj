@@ -72,6 +72,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdaptiveMedianFilter.cs" />
     <Compile Include="AlphaTrim.cs" />
     <Compile Include="CountingSort.cs" />
     <Compile Include="DrawGraph.cs" />
