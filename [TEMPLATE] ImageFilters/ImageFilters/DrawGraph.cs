@@ -36,24 +36,22 @@ namespace ZGraphTools
             {
                 if (g == GraphType.ADAPTIVE_MEDIAN)
                 {
-                     for (int i = 3; i < wMax; i = i + 2)
-                     {
-                          //using counting sort
+                          AdaptiveMedianFilter adptvMdin; 
+                          //using Quick sort
                           before = System.Environment.TickCount;
-                          AdaptiveMedianFilter adptvMdin = new AdaptiveMedianFilter(dummyImage, i);
+                          adptvMdin = new AdaptiveMedianFilter(dummyImage, windowSize);
                           adptvMdin.Filter(SortingType.COUNTING_SORT);
                           after = System.Environment.TickCount;
-                          x[(i / 2) - 1] = after - before;
-                          y[(i / 2) - 1] = after - before;
+                          y[index] = after - before;
 
-                          //using Quik sort
+                          //using Counting Sort sort
                           before = System.Environment.TickCount;
-                          adptvMdin = new AdaptiveMedianFilter(dummyImage, i);
-                          adptvMdin.Filter(SortingType.QUICK_SORT);
+                          adptvMdin = new AdaptiveMedianFilter(dummyImage, windowSize);
+                          adptvMdin.Filter(SortingType.COUNTING_SORT);
                           after = System.Environment.TickCount;
-                          y2[(i / 2) - 1] = after - before;
+                          y2[index] = after - before;
                      }
-                }
+                
                 else
                 {
                     /*OPERATION*/
@@ -78,8 +76,8 @@ namespace ZGraphTools
             }
             if (g == GraphType.ADAPTIVE_MEDIAN)
             {
-                 z.add_curve("Name goes here", x, y, System.Drawing.Color.Black);
-                 z.add_curve("Name goes here", x, y2, System.Drawing.Color.Crimson);
+                 z.add_curve("Quick Sort", x, y, System.Drawing.Color.Black);
+                 z.add_curve("Counting Sort", x, y2, System.Drawing.Color.Crimson);
             }
             else
             {

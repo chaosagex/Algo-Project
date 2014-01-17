@@ -26,15 +26,15 @@ namespace ImageFilters
             this.WinMaxSiz = WinMxSiz;
             initImage = new byte[image.GetLength(0) + (WinMxSiz) - 1, image.GetLength(1) + (WinMxSiz) - 1];
             imageMatrix = new byte[image.GetLength(0), image.GetLength(1)];
-            initImage = ImageTools.initArray(image, WinMaxSiz);
-            // initImage = initArray(image, WinMaxSiz);
+            //initImage = ImageTools.initArray(image, WinMaxSiz);
+            initImage = initArray(image, WinMaxSiz);
             //  DisplayImage(initImage, pictureBox);
 
 
         }
         #region filtering
         //---------------------------------------------------------------------------------------------------------
-
+       
 
 
         //---------------------------------------------------------------------------------------------------------
@@ -55,10 +55,7 @@ namespace ImageFilters
         }
         //------------------------------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------------------------------
-        public void DisplayImage(byte[,] imageMatrix, PictureBox picturebox)
-        {
-            ImageFilters.ImageOperations.DisplayImage(imageMatrix, pictureBox);
-        }
+       
        
         private byte[] window(int X, int Y, byte[,] image, int Wsize, int WinMaxSiz)
         {
@@ -100,7 +97,7 @@ namespace ImageFilters
                else 
                { Array.Sort(ImgWindow); }
               
-            Array.Sort(ImgWindow);
+           // Array.Sort(ImgWindow);
             Zxy = image[X, Y];
             Zmax = ImgWindow[(Wsize * Wsize) - 1];
             Zmin = ImgWindow[0];
@@ -136,6 +133,16 @@ namespace ImageFilters
 
         }
 #endregion
+
+        public byte[,] getFilteredImage()
+        {
+            return imageMatrix;
+        }
+
+        public void DisplayImage(byte[,] imageMatrix, PictureBox picturebox)
+        {
+            ImageFilters.ImageOperations.DisplayImage(imageMatrix, pictureBox);
+        }
         #region helpful mwthods
         public byte[] convert(byte[,] win, int size)
         {
@@ -165,7 +172,7 @@ namespace ImageFilters
                 {
 
 
-                    /*
+                    
                                        if (i < MaxWinSiz / 2 && j >= MaxWinSiz / 2 && i < initImage.GetLength(0) - (MaxWinSiz / 2) && j < initImage.GetLength(1) - (MaxWinSiz / 2))
                                          {
                                              initImage[i, j] = image[X_mask1,  j - (MaxWinSiz / 2)];
@@ -191,23 +198,22 @@ namespace ImageFilters
                       
              
                    
-                                       else*/
-                    if (i >= MaxWinSiz / 2 && j >= MaxWinSiz / 2 && i < initImage.GetLength(0) - (MaxWinSiz / 2) && j < initImage.GetLength(1) - (MaxWinSiz / 2))
-                    {
-                        initImage[i, j] = image[i - (MaxWinSiz / 2), j - (MaxWinSiz / 2)];
-                    }
-                    else
-                    {
-                        initImage[i, j] = 0;
-                    }
+                                       else if (i >= MaxWinSiz / 2 && j >= MaxWinSiz / 2 && i < initImage.GetLength(0) - (MaxWinSiz / 2) && j < initImage.GetLength(1) - (MaxWinSiz / 2))
+                                       {
+                                            initImage[i, j] = image[i - (MaxWinSiz / 2), j - (MaxWinSiz / 2)];
+                                       }
+                                      else
+                                      {
+                                           initImage[i, j] = 0;
+                                      }
 
-                    Y_mask1--;
-                    if (j >= initImage.GetLength(1) - (MaxWinSiz / 2))
-                    { Y_mask2++; }
-                }
-                X_mask1--;
-                if (i >= initImage.GetLength(0) - (MaxWinSiz / 2))
-                { X_mask2++; }
+                                      Y_mask1--;
+                                     if (j >= initImage.GetLength(1) - (MaxWinSiz / 2))
+                                      { Y_mask2++; }
+                            }
+                            X_mask1--;
+                            if (i >= initImage.GetLength(0) - (MaxWinSiz / 2))
+                           { X_mask2++; }
 
             }
             return initImage;
