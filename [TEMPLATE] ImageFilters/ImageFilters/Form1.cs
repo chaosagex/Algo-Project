@@ -115,7 +115,7 @@ namespace ImageFilters
                 AdaptiveMedianFilter adptvMdin = new AdaptiveMedianFilter(ImageMatrix, windowMaxSize);
 
                 if (rdQuickSort_Median.Checked)
-                    sortingType = SortingType.KTH_ELEMENT;
+                    sortingType = SortingType.QUICK_SORT;
                 else if (rdCountingSort_Median.Checked)
                     sortingType = SortingType.COUNTING_SORT;
                 else
@@ -126,16 +126,10 @@ namespace ImageFilters
 
                 if (filteredImage != null)  //No problem catched in 'removeNoise'.
                 {
-                    //Improving borders:
-                   // filteredImage = ImageTools.initArray(filteredImage, windowMaxSize);
-
                     //Final display:
                     ImageOperations.DisplayImage(filteredImage, rightPictureBox);
                 }
             }
-
-
-            //The click event handler for Median Filter button.
         }
 
         private void rightPictureBox_Click(object sender, EventArgs e)
