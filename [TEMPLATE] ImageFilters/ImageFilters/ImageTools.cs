@@ -70,8 +70,8 @@ namespace ImageFilters
             int X_mask2 = 1;
             int Y_mask1 = MaxWinSiz;
             int Y_mask2 = 1;
-            byte[,] initImage = new byte[image.GetLength(0), image.GetLength(1)];
-            
+            byte[,] initImage = new byte[image.GetLength(0) + (MaxWinSiz) - 1, image.GetLength(1) + (MaxWinSiz) - 1];
+
             for (int i = 0; i < initImage.GetLength(0); i++)
             {
                 Y_mask1 = MaxWinSiz;
@@ -79,13 +79,16 @@ namespace ImageFilters
 
                 for (int j = 0; j < initImage.GetLength(1); j++)
                 {
+
                     if (i < MaxWinSiz / 2 && j >= MaxWinSiz / 2 && i < initImage.GetLength(0) - (MaxWinSiz / 2) && j < initImage.GetLength(1) - (MaxWinSiz / 2))
                     {
                         initImage[i, j] = image[X_mask1, j - (MaxWinSiz / 2)];
+
                     }
                     else if (i >= initImage.GetLength(0) - (MaxWinSiz / 2) && j >= MaxWinSiz / 2 && j < initImage.GetLength(1) - (MaxWinSiz / 2))
                     {
                         initImage[i, j] = image[i - (MaxWinSiz / 2) - X_mask2, j - (MaxWinSiz / 2)];
+
                     }
 
 
@@ -112,16 +115,12 @@ namespace ImageFilters
 
                     Y_mask1--;
                     if (j >= initImage.GetLength(1) - (MaxWinSiz / 2))
-                    { 
-                        Y_mask2++;
-                    }
+                    { Y_mask2++; }
                 }
 
                 X_mask1--;
                 if (i >= initImage.GetLength(0) - (MaxWinSiz / 2))
-                {
-                    X_mask2++;
-                }
+                { X_mask2++; }
 
             }
             return initImage;

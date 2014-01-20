@@ -37,14 +37,12 @@ namespace ImageFilters
             int imageWidth = imageMatrix.GetLength(1);
 
             byte[,] window = new byte[windowSize, windowSize];
-            //Random rnd = new Random();
 
             for (int i = windowStep; i < imageHeight - windowStep; i++)
             {
                 for (int j = windowStep; j < imageWidth - windowStep; j++)
                 {
                     /* Iterations happening for every pixel in the image */
-                    //ImageMatrix[i, j] = byte.Parse(rnd.Next(255).ToString());
                     for (int m = 0, n = i - windowStep; m < windowSize; m++, n++)
                     {
                         for (int k = 0, l = j - windowStep; k < windowSize; k++, l++)
@@ -63,10 +61,6 @@ namespace ImageFilters
                     }
                     else if (sortingType == SortingType.COUNTING_SORT){
                         newWindow = Sort.CountingSort.sort(newWindow);
-                    }
-                    else
-                    {
-                        //Waiting...
                     }
 
                     newWindow = ImageTools.exclude(newWindow, trimValue); //Exclude by trim (T)

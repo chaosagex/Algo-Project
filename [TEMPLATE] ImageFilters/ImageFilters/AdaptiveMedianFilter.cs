@@ -24,10 +24,9 @@ namespace ImageFilters
         public AdaptiveMedianFilter(byte[,] image, int WinMxSiz)
         {
             this.WinMaxSiz = WinMxSiz;
-            initImage = new byte[image.GetLength(0) + (WinMxSiz) - 1, image.GetLength(1) + (WinMxSiz) - 1];
             imageMatrix = new byte[image.GetLength(0), image.GetLength(1)];
-            //initImage = ImageTools.initArray(image, WinMaxSiz);
-            initImage = initArray(image, WinMaxSiz);
+            initImage = ImageTools.initArray(image, WinMaxSiz);
+            //initImage = initArray(image, WinMaxSiz);
             //  DisplayImage(initImage, pictureBox);
 
 

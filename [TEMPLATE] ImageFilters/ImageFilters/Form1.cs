@@ -91,7 +91,7 @@ namespace ImageFilters
                 if (filteredImage != null)  //No problem catched in 'removeNoise'.
                 {
                     //Improving borders:
-                    filteredImage = ImageTools.initArray(filteredImage, windowSize);
+                    //filteredImage = ImageTools.initArray(filteredImage, windowSize);
 
                     //Final display:
                     ImageOperations.DisplayImage(filteredImage, rightPictureBox);
