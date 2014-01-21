@@ -40,7 +40,7 @@ namespace ZGraphTools
                           //using Quick sort
                           before = System.Environment.TickCount;
                           adptvMdin = new AdaptiveMedianFilter(dummyImage, windowSize);
-                          adptvMdin.Filter(SortingType.COUNTING_SORT);
+                          adptvMdin.Filter(SortingType.QUICK_SORT);
                           after = System.Environment.TickCount;
                           y[index] = after - before;
 

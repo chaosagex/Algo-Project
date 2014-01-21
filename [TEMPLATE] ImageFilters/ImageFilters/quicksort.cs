@@ -8,22 +8,29 @@ namespace Sort
      {
           static public int Partition(byte[] numbers, int left, int right)
           {
-               int pivot = numbers[left];
-               while (true)
-               {
-                    while (numbers[left] < pivot)
-                         left++;
-
-                    while (numbers[right] > pivot)
-                         right--;
-
-                    if (left < right)
-                         KthElement.Swap(ref numbers[left], ref numbers[right]);
-                    else
-                    {
-                         return right;
-                    }
-               }
+			  int pivot = numbers[left];
+			  int i = left;
+			  int j = right;
+			  byte temp;
+			  while (true)
+			  {
+				  if (numbers[i] <= pivot)
+					  i++;
+				  if (numbers[j] >= pivot)
+					  j--;
+				  if (i < j && numbers[i] > numbers[j])
+				  {
+					  temp = numbers[i];
+					  numbers[i] = numbers[j];
+					  numbers[j] = temp;
+				  }
+				  else if (i > j)
+					  break;
+			  }
+			  temp = numbers[j];
+			  numbers[j] = numbers[left];              //swap pivot arr[j] aly hwa as8ar rakm
+			  numbers[left] = temp;
+			  return j;
           }
 
           static public void QuickSort_Recursive(byte[] arr, int left, int right)
