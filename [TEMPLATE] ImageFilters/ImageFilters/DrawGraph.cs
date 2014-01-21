@@ -59,13 +59,13 @@ namespace ZGraphTools
  
                     //Using KTH ELEMENT:
                     before = System.Environment.TickCount;
-                    alphaTrim.removeNoise(windowSize, 3, SortingType.KTH_ELEMENT);  /*The 3 here is the trim value, constant.*/
+                    alphaTrim.removeNoise(windowSize, 0, SortingType.KTH_ELEMENT);  /*The 0 here is the trim value, constant.*/
                     after = System.Environment.TickCount;
                     y[index] = after - before;
 
                     //Using COUNTING SORT:
                     before = System.Environment.TickCount;
-                    alphaTrim.removeNoise(windowSize, 3, SortingType.COUNTING_SORT);
+                    alphaTrim.removeNoise(windowSize, 0, SortingType.COUNTING_SORT);
                     after = System.Environment.TickCount;
                     y2[index] = after - before;
                     

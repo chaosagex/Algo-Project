@@ -77,7 +77,7 @@ namespace ImageFilters
             {
                 SortingType sortingType;
                 byte[,] filteredImage;
-                AlphaTrimFilter alphaTrim = new AlphaTrimFilter(ImageMatrix);
+                AlphaTrimFilter alphaTrim = new AlphaTrimFilter((byte[,])ImageMatrix.Clone());
 
                 if (rdKthSort_Alpha.Checked)
                     sortingType = SortingType.KTH_ELEMENT;
@@ -88,11 +88,8 @@ namespace ImageFilters
 
                 filteredImage = alphaTrim.removeNoise(windowSize, trimValue, sortingType);
 
-                if (filteredImage != null)  //No problem catched in 'removeNoise'.
+                if (filteredImage != null)  //No problem catched.
                 {
-                    //Improving borders:
-                    //filteredImage = ImageTools.initArray(filteredImage, windowSize);
-
                     //Final display:
                     ImageOperations.DisplayImage(filteredImage, rightPictureBox);
                 }
