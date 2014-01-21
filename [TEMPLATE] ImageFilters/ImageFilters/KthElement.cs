@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Sort
+          //O(Kn^2)
+          //Theta(Knlogn)
 {
      class KthElement
      {
+          //O(K)
           public static byte[] sort(ref byte[] arr, int k)
           {
                int index;
                int begin = 0;
                int end = arr.Length - 1;
+               
                for (int l = 0; l < k; l++)
                {
                     index = smallest(ref arr, begin, end);
@@ -22,7 +26,8 @@ namespace Sort
                }
                return arr;
           }
-
+          //O(n^2)
+          //Theta(nlogn)
           private static int smallest(ref byte[] arr, int begin, int end)
           {
                if (begin + 1 == end)
@@ -54,6 +59,8 @@ namespace Sort
                ToolBox.Tools.Swap(ref arr[j], ref arr[pivot]);
                return smallest(ref arr, begin, j);
           }
+          //O(n^2)
+          //Theta(nlogn)
           private static int largest(ref byte[] arr, int begin, int end)
           {
                if (begin + 1 == end)
