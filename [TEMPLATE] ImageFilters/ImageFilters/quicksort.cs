@@ -20,9 +20,7 @@ namespace Sort
 					  j--;
 				  if (i < j && numbers[i] > numbers[j])
 				  {
-					  temp = numbers[i];
-					  numbers[i] = numbers[j];
-					  numbers[j] = temp;
+                           ToolBox.Tools.Swap(ref numbers[i],ref  numbers[j]);
 				  }
 				  else if (i > j)
 					  break;

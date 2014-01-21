@@ -14,10 +14,10 @@ namespace Sort
                for (int l = 0; l < k; l++)
                {
                     index = smallest(ref arr, begin, end);
-                    Swap(ref arr[index], ref arr[begin]);
+                    ToolBox.Tools.Swap(ref arr[index], ref arr[begin]);
                     begin++;
                     index = largest(ref arr, begin, end);
-                    Swap(ref arr[index], ref arr[end]);
+                    ToolBox.Tools.Swap(ref arr[index], ref arr[end]);
                     end--;
                }
                return arr;
@@ -49,9 +49,9 @@ namespace Sort
                     while (arr[j] > arr[pivot])
                          j--;
                     if (i < j)
-                         Swap(ref arr[i], ref arr[j]);
+                         ToolBox.Tools.Swap(ref arr[i], ref arr[j]);
                }
-               Swap(ref arr[j], ref arr[pivot]);
+               ToolBox.Tools.Swap(ref arr[j], ref arr[pivot]);
                return smallest(ref arr, begin, j);
           }
           private static int largest(ref byte[] arr, int begin, int end)
@@ -80,17 +80,10 @@ namespace Sort
                     while (arr[j] > arr[pivot])
                          j--;
                     if (i < j)
-                         Swap(ref arr[i], ref arr[j]);
+                         ToolBox.Tools.Swap(ref arr[i], ref arr[j]);
                }
-               Swap(ref arr[j], ref arr[pivot]);
+               ToolBox.Tools.Swap(ref arr[j], ref arr[pivot]);
                return largest(ref arr, j + 1, end);
-          }
-          public static void Swap<T>(ref T lhs, ref T rhs)
-          {
-               T temp;
-               temp = lhs;
-               lhs = rhs;
-               rhs = temp;
           }
      }
 }
