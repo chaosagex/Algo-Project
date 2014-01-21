@@ -29,6 +29,7 @@ namespace ImageFilters
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.leftPictureBox = new System.Windows.Forms.PictureBox();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnZGraph = new System.Windows.Forms.Button();
@@ -411,9 +412,9 @@ namespace ImageFilters
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.leftPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "mainForm";
-            this.ShowIcon = false;
             this.Text = "Image Filters";
             ((System.ComponentModel.ISupportInitialize)(this.leftPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numWindowSize_Alpha)).EndInit();
