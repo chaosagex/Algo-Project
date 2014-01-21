@@ -92,5 +92,42 @@ namespace Sort
                ToolBox.Tools.Swap(ref arr[j], ref arr[pivot]);
                return largest(ref arr, j + 1, end);
           }
+          private static int elementAt(List<byte> A, int k, List<byte> m)
+          {
+               int n;
+               int pivot;
+               List<byte> A1 = new List<byte>();
+               List<byte> A2 = new List<byte>();
+               n = A.Count;
+               if (A.Count != m.Count)
+                    pivot = A[0];
+               else
+                    pivot = 0;
+               for (byte i = 0; i < n; i++)
+               {
+                    if (A.Count == m.Count)
+                    {
+                         if (A[i] < A[pivot])
+                              A1.Add(i);
+                         else if (A[i] > A[pivot])
+                              A2.Add(i);
+                    }
+                    else
+                    {
+                         if (m[A[i]] < m[pivot])
+                              A1.Add(A[i]);
+                         else if (m[A[i]] > m[pivot])
+                              A2.Add(A[i]);
+                    }
+
+               }
+
+               if (k <= A1.Count)
+                    return elementAt(A1, k, m);
+               else if (k > A.Count - A2.Count)
+                    return elementAt(A2, k - (A.Count - A2.Count), m);
+               else
+                    return pivot;
+          }
      }
 }
