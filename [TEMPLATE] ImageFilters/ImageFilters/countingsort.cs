@@ -14,7 +14,7 @@ namespace Sort
 
 
                // O(N)
-               for (byte i = 0; i < length; i++)
+               for (int i = 0; i < length; i++)
                {
                     if (input[i] > max)
                     {
@@ -28,7 +28,7 @@ namespace Sort
                int length2 = counts.Length;
 
                // O(N)
-               for (byte i = 0; i < length; i++)
+               for (int i = 0; i < length; i++)
                {
                     counts[input[i]]++;
                }

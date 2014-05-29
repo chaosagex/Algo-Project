@@ -25,9 +25,7 @@ namespace Sort
 				  else if (i > j)
 					  break;
 			  }
-			  temp = numbers[j];
-			  numbers[j] = numbers[left];              //swap pivot arr[j] aly hwa as8ar rakm
-			  numbers[left] = temp;
+                 ToolBox.Tools.Swap(ref numbers[j], ref  numbers[left]);
 			  return j;
           }
 

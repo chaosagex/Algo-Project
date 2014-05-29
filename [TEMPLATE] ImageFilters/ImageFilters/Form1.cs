@@ -77,7 +77,7 @@ namespace ImageFilters
             {
                 SortingType sortingType;
                 byte[,] filteredImage;
-                AlphaTrimFilter alphaTrim = new AlphaTrimFilter((byte[,])ImageMatrix.Clone());
+                AlphaTrimFilter alphaTrim = new AlphaTrimFilter(ImageMatrix);
 
                 if (rdKthSort_Alpha.Checked)
                     sortingType = SortingType.KTH_ELEMENT;

@@ -11,8 +11,7 @@ namespace ImageFilters
 
         public AlphaTrimFilter(byte[,] imageMatrix)
         {
-            this.imageMatrix = (byte[,])imageMatrix.Clone();
-             //this.imageMatrix = imageMatrix;
+            this.imageMatrix = imageMatrix;
         }
 
         public byte[,] removeNoise(int windowSize, int trimValue, SortingType sortingType)
@@ -48,12 +47,12 @@ namespace ImageFilters
                     {
                         for (int k = 0, l = j - windowStep; k < windowSize; k++, l++)
                         {
-                            window[m + (windowSize * k)] = imageMatrix[n, l];        //Making a window
+                            window[m + (windowSize*k)] = imageMatrix[n, l];        //Making a window
                         }
                     }
 
-                    //byte[] newWindow = ImageTools.to1D(window);      //Convert to 1D
-                    byte[] newWindow = window;      //Convert to 1D
+                    //byte[] newWindow = ImageTools.to1D(window);    //Convert to 1D. EDIT: NOT NEEDED NOW.
+                    byte[] newWindow = window;
 
                     if (sortingType == SortingType.BUILT_IN_SORT){   //Sort
                         Array.Sort(newWindow);
@@ -63,6 +62,11 @@ namespace ImageFilters
                     }
                     else if (sortingType == SortingType.COUNTING_SORT){
                         newWindow = Sort.CountingSort.sort(newWindow);
+                    }
+                    else if (sortingType == SortingType.QUICK_SORT)
+                    {
+                        int right = newWindow.Length - 1;
+                        Sort.quicksort.QuickSort_Recursive(newWindow, 0, right);
                     }
 
                     newWindow = ImageTools.exclude(newWindow, trimValue); //Exclude by trim (T)

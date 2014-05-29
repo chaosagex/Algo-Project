@@ -10,7 +10,7 @@ namespace ZGraphTools
     {
         public static void draw(int wMax, GraphType g)
         {
-            byte[,] dummyImage = ImageOperations.OpenImage("..\\..\\..\\..\\More Images\\tiger.png");  //Using the "tiger" image as a dummy image to use in filtering.
+             byte[,] dummyImage = ImageOperations.OpenImage("..\\..\\..\\..\\Images\\Uniform_and_Salt_Pepper.bmp");  //Using the "tiger" image as a dummy image to use in filtering.
             //Call: "(int)numMaxWindow_Graph.Value" as wMax value when you call this method (draw).
 
             ZGraphForm z;
@@ -45,11 +45,11 @@ namespace ZGraphTools
                           y[index] = after - before;
 
                           //using Counting Sort sort
-                          before = System.Environment.TickCount;
+                          int before2 = System.Environment.TickCount;
                           adptvMdin = new AdaptiveMedianFilter(dummyImage, windowSize);
                           adptvMdin.Filter(SortingType.COUNTING_SORT);
-                          after = System.Environment.TickCount;
-                          y2[index] = after - before;
+                          int after2 = System.Environment.TickCount;
+                          y2[index] = after2 - before2;
                      }
                 
                 else
@@ -59,13 +59,13 @@ namespace ZGraphTools
  
                     //Using KTH ELEMENT:
                     before = System.Environment.TickCount;
-                    alphaTrim.removeNoise(windowSize, 0, SortingType.KTH_ELEMENT);  /*The 0 here is the trim value, constant.*/
+                    alphaTrim.removeNoise(windowSize, 4, SortingType.KTH_ELEMENT);  /*The 0 here is the trim value, constant.*/
                     after = System.Environment.TickCount;
                     y[index] = after - before;
 
                     //Using COUNTING SORT:
                     before = System.Environment.TickCount;
-                    alphaTrim.removeNoise(windowSize, 0, SortingType.COUNTING_SORT);
+                    alphaTrim.removeNoise(windowSize, 4, SortingType.COUNTING_SORT);
                     after = System.Environment.TickCount;
                     y2[index] = after - before;
                     
